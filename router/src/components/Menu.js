@@ -69,30 +69,31 @@ const items = [
     key: 'ext_link',
   },
 ];
-const TopMenu = () => {
+const TopMenu = (props) => {
+  console.log(props)
   const [selectedMenu, setSelectedMenu] = useState('home');
   const [home, setHome] = useState(true);
   const [about, setAbout] = useState(false);
 
-  const onClick = (x) => {
-    console.log('click ', e);
-    setSelectedMenu(x.key);
+  // const onClick = (x) => {
+  //   console.log('click ', x);
+  //   setSelectedMenu(x.key);
 
-    if(x.key == 'about'){
-        setAbout(true)
-        setHome(false)
-    }
-    if(x.key == 'home'){
-        setAbout(false)
-        setHome(true)
-    }
-  };
+  //   if(x.key == 'about'){
+  //       setAbout(true)
+  //       setHome(false)
+  //   }
+  //   if(x.key == 'home'){
+  //       setAbout(false)
+  //       setHome(true)
+  //   }
+  // };
 
   return (
     <>
-    <div>{home ? (<div>This is home page</div>) : (<></>)}</div>
-    <div>{about ? (<div>This is about page</div>) : (<></>)}</div>
-    <Menu onClick={onClick} selectedKeys={[selectedMenu]} mode="horizontal" items={items} />
+    {/* <div>{home ? (<div>This is home page</div>) : (<></>)}</div>
+    <div>{about ? (<div>This is about page</div>) : (<></>)}</div> */}
+    <Menu onClick={props.onClick} selectedKeys={[selectedMenu]} mode="horizontal" items={items} />
     </>
   
   );

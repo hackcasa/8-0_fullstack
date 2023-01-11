@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, {Link, useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 const items = [
   {
-    label: 'Home',
+    label: (
+      <a href="/" rel="noopener noreferrer">
+        Home
+      </a>
+    ),
     key: 'home',
     icon: <MailOutlined />,
   },
   {
-    label: 'About',
-    key: 'about',
+    label: (
+      <a href="/about" rel="noopener noreferrer">
+        about
+      </a>
+    ),
+    key: 'About',
     icon: <AppstoreOutlined />,
     disabled: false,
   },
@@ -75,25 +83,26 @@ const TopMenu = (props) => {
   const [home, setHome] = useState(true);
   const [about, setAbout] = useState(false);
 
-  // const onClick = (x) => {
-  //   console.log('click ', x);
-  //   setSelectedMenu(x.key);
+  const onClick = (x) => {
+    console.log('click ', x);
+    setSelectedMenu(x.key);
 
-  //   if(x.key == 'about'){
-  //       setAbout(true)
-  //       setHome(false)
-  //   }
-  //   if(x.key == 'home'){
-  //       setAbout(false)
-  //       setHome(true)
-  //   }
-  // };
+    if(x.key == 'about'){
+        setAbout(true)
+        setHome(false)
+    }
+    if(x.key == 'home'){
+        setAbout(false)
+        setHome(true)
+    }
+  };
 
   return (
     <>
     {/* <div>{home ? (<div>This is home page</div>) : (<></>)}</div>
     <div>{about ? (<div>This is about page</div>) : (<></>)}</div> */}
-    <Menu onClick={props.onClick} selectedKeys={[selectedMenu]} mode="horizontal" items={items} />
+    {/* <Menu onClick={props.onClick} selectedKeys={[selectedMenu]} mode="horizontal" items={items} /> */}
+    <Menu selectedKeys={[selectedMenu]} mode="horizontal" items={items} />
     </>
   
   );
